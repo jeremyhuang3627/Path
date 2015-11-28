@@ -12,9 +12,9 @@ var configDB    = require('./config/database.js');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var childProcess = require('child_process');
-var updateTimeInterval = 1000*60*60*24*30 // one month
+var updateTimeInterval = 1000*60*60*24 // one day
 
-function downloadSchedule() {
+function updateSchedule(){
   console.log("downloading schedule");
   childProcess.exec('node ./node_modules/gtfs/scripts/download.js',
   function (error, stdout, stderr) {
@@ -23,10 +23,12 @@ function downloadSchedule() {
     if (error !== null) {
       console.log('exec error: ' + error);
     }
-    setTimeout(downloadSchedule(),updateTimeInterval);
+    setTimeout(function(){
+      updateSchedule();
+    },updateTimeInterval);
   });
-}
-downloadSchedule();
+}; 
+updateSchedule();
 
 mongoose.connect(configDB.url);
 
