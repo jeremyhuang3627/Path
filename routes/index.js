@@ -17,9 +17,9 @@ router.get('/*', function(req, res, next) {
 		model = Route;
 	} else if (req.url == '/stops') {
 		model = Stop;
-	} else if (req.url == '/StopTime') {
+	} else if (req.url == '/stoptimes') {
 		model = StopTime;
-	} else if (req.url == '/RouteDirection') {
+	} else if (req.url == '/routedirection') {
 		model = RouteDirection;
 	};
 
@@ -32,7 +32,7 @@ router.get('/*', function(req, res, next) {
   		if (err) {
   			throw err
   		}
-  		console.log(data);
+  		//console.log(data);
   		res.send(JSON.stringify(data));
   	});
 });
