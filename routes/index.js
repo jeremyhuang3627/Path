@@ -17,9 +17,9 @@ router.get('/*', function(req, res, next) {
 		model = Route;
 	} else if (req.url == '/stops') {
 		model = Stop;
-	} else if (req.url == '/stoptimes') {
+	} else if (req.url == '/stop_times') {
 		model = StopTime;
-	} else if (req.url == '/routedirection') {
+	} else if (req.url == '/route_direction') {
 		model = RouteDirection;
 	};
 
